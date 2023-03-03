@@ -12,7 +12,7 @@ class EggController extends Controller
      */
     public function index()
     {
-        $eggs=Egg::all();
+        $eggs = Egg::all();
         return view("eggs.index", compact("eggs"));
     }
 
@@ -21,7 +21,7 @@ class EggController extends Controller
      */
     public function create()
     {
-     return view("eggs.create");
+        return view("eggs.create");
     }
 
     /**
@@ -30,7 +30,13 @@ class EggController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $egg=new Egg();
+        $request->validate([
+            'package_color' => 'required|string',
+            'surprise' => 'nullable|string',
+            'type_chocolate' => 'required|string',
+            'size' => 'required|string',
+        ]);
+        $egg = new Egg();
         $egg->fill($data);
         $egg->save();
         return redirect()->route("eggs.index");
@@ -41,7 +47,7 @@ class EggController extends Controller
      */
     public function show(string $id)
     {
-        $egg=Egg::findOrFail($id);
+        $egg = Egg::findOrFail($id);
         return view("eggs.show", compact("egg"));
     }
 
@@ -50,7 +56,7 @@ class EggController extends Controller
      */
     public function edit(string $id)
     {
-        $egg=Egg::findOrFail($id);
+        $egg = Egg::findOrFail($id);
         return view("eggs.edit", compact("egg"));
     }
 
@@ -59,8 +65,14 @@ class EggController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $egg=Egg::findOrFail($id);
-        $data=$request->all();
+        $egg = Egg::findOrFail($id);
+        $request->validate([
+            'package_color' => 'required|string',
+            'surprise' => 'nullable|string',
+            'type_chocolate' => 'required|string',
+            'size' => 'required|string',
+        ]);
+        $data = $request->all();
         $egg->fill($data);
         $egg->save();
         return redirect()->route("eggs.index");
@@ -71,8 +83,8 @@ class EggController extends Controller
      */
     public function destroy(string $id)
     {
-        $egg=Egg::findOrFail($id);
+        $egg = Egg::findOrFail($id);
         $egg->delete();
-        return to_route("eggs.index")->with("delete", "L'Uovo è stato eliminato");
+        return to_route("eggs.index")->with("delete", "Uovo eliminato con successo!");
     }
 }

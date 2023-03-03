@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string("package_color", 20);
             $table->string("surprise", 50)->nullable();
             $table->string("type_chocolate", 20);
-            $table->char("size", 1)->default("M");
+            $table->string("size", 2)->default("M");
             $table->timestamps();
         });
     }

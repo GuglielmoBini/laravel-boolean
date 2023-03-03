@@ -1,4 +1,5 @@
 @extends('layouts.main')
+@section("title", 'Home')
 @section('content')
 <main id="home-principal" >
     <div class="d-flex align-items-center justify-content-center h-100">

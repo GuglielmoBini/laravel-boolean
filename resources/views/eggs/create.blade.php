@@ -1,4 +1,5 @@
 @extends('layouts.main')
+@section('title', 'New Egg')
 @section("content")
 <main>
     <h1 class="text-center py-4">Creazione Uova</h1>
@@ -9,42 +10,39 @@
 @csrf
 
 <div class="row">
-  {{-- form title --}}
+  {{-- form color --}}
   <div class="col-6">
     <div class="mb-3">
       <label for="package_color" class="form-label">Colore Pacchetto</label>
-      <input type="text" class="form-control" id="package_color" name="package_color" placeholder="Colore Pacchetto..."
-        >
+      <input type="text" class="form-control" id="package_color" name="package_color" placeholder="Colore Pacchetto..." required>
     </div>
   </div>
-  {{-- form thumb --}}
+  {{-- form surprise --}}
   <div class="col-6">
     <div class="mb-3">
       <label for="surprise" class="form-label">Sorpresa</label>
-      <input type="text" class="form-control" id="surprise" name="surprise" placeholder="Sorpresa..."
-        >
+      <input type="text" class="form-control" id="surprise" name="surprise" placeholder="Sorpresa...">
     </div>
   </div>
 
-  {{-- testo--}}
+  {{-- form type of chocolate--}}
   <div class="col-6">
     <div class="mb-3">
       <label for="type_chocolate" class="form-label">Cioccolato</label>
-      <input type="text" class="form-control" id="type_chocolate" name="type_chocolate" placeholder="Tipo di Cioccolato..."
-        >
+      <input type="text" class="form-control" id="type_chocolate" name="type_chocolate" placeholder="Tipo di Cioccolato..." required>
     </div>
   </div>
 
-    {{-- select --}}
+  {{-- select dimensions --}}
   <div class="col-6">
     <div class="mb-3">
       <label for="size" class="form-label">Dimensione</label>
-      <select name="size" id="size" class="form-select" >
+      <select name="size" id="size" class="form-select" required>
         <option selected>Seleziona Dimensione</option>
         <option value="S">S</option>
         <option value="M">M</option>
         <option value="L">L</option>
-        <option value="X">X</option>
+        <option value="XL">XL</option>
       </select>
     </div>
   </div>
